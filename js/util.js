@@ -1,3 +1,5 @@
+const donateHistory = [];
+
 function getInputValue(id) {
   const value = parseFloat(document.getElementById(id).value);
   return value;
@@ -12,21 +14,38 @@ function setInnerText(id, value) {
   element.innerText = value;
 }
 
-function handleDonation(btnID, inputId, donationAmountId) {
+function handleDonation(btnID, inputId, donationAmountId, titleId) {
   document.getElementById(btnID).addEventListener("click", function () {
     const inputValue = getInputValue(inputId);
     if (isNaN(inputValue) || inputValue <= 0) {
       return alert("please provide a valid amount of money");
     }
+    // donation balance
     const donationTillNow = parseFloat(getInnerText(donationAmountId));
-
     const donationAmount = donationTillNow + inputValue;
-
     setInnerText(donationAmountId, donationAmount);
 
+    // total balance
     const totalBalance = parseFloat(getInnerText("total-balance"));
     const newBalance = totalBalance + inputValue;
     setInnerText("total-balance", newBalance);
-    document.getElementById(inputId).value= "";
+    document.getElementById(inputId).value = "";
+
+    // history handle
+    const title = document.getElementById(titleId).innerText;
+    const donationDetail = {
+      id: donateHistory.length + 1,
+      title,
+      amount: inputValue,
+      time: new Date(),
+    };
+    donateHistory.unshift(donationDetail);
+    
+    // handle modal
+    document.getElementById(
+      "modal-amount"
+    ).innerHTML = `You have donated <span class="text-lg font-bold text-orange-400"> ${inputValue}</span> taka for ${title}`;
+
+    document.getElementById("modal-div").classList.remove("hidden");
   });
 }

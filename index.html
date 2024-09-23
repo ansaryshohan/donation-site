@@ -31,7 +31,7 @@
             <!-- balance -->
             <div class="flex items-center justify-center gap-1">
               <img src="./assets/coin.png" alt="coin" />
-              <span id="total-balance">5500</span>
+              <span id="total-balance" class="font-bold text-xl text-orange-500">5500</span>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@
             </div>
             <!-- text contents  -->
             <div>
-              <h3 class="card-title">
+              <h3 class="card-title" id="feni-title">
                 Donate for Flood Relief in Feni,Bangladesh
               </h3>
               <p class="text-base text-gray-500 mt-2">
@@ -178,7 +178,7 @@
             </div>
             <!-- text contents  -->
             <div>
-              <h3 class="card-title">
+              <h3 class="card-title" id="quota-title">
                 Aid for Injured in the Quota Movement
               </h3>
               <p class="text-base text-gray-500 mt-2">
@@ -201,28 +201,23 @@
       </section>
       <!-- History section -->
       <section id="history-section" class="container mx-auto grid grid-cols-1 place-content-center pt-5 gap-4 hidden">
-        <div class="w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3">
+        <!-- <div class="w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3">
           <h3 class="card-title mb-2">96500 Taka is Donated for famine-2024 at Feni, Bangladesh</h3>
           <p class="text-base text-gray-500">Date : Tue Sep 17 2024 08:39:11 GMT +0600 (Bangladesh Standard Time)</p>
-        </div>
-        <div class="w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3">
-          <h3 class="card-title mb-2">96500 Taka is Donated for famine-2024 at Feni, Bangladesh</h3>
-          <p class="text-base text-gray-500">Date : Tue Sep 17 2024 08:39:11 GMT +0600 (Bangladesh Standard Time)</p>
-        </div>
-        <div class="w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3">
-          <h3 class="card-title mb-2">96500 Taka is Donated for famine-2024 at Feni, Bangladesh</h3>
-          <p class="text-base text-gray-500">Date : Tue Sep 17 2024 08:39:11 GMT +0600 (Bangladesh Standard Time)</p>
-        </div>
+        </div> -->
       </section>
     </main>
     <!-- modal div -->
-     <div class="fixed top-0 left-0 w-full h-screen bg-black/80 grid place-content-center">
-      <div class="card bg-primary text-primary-content w-96">
-        <div class="card-body">
-          <h2 class="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn">Buy Now</button>
+     <div id="modal-div" class="fixed top-0 left-0 w-full h-screen bg-black/80 grid place-content-center hidden">
+      <div class="card bg-slate-100 text-primary-content w-11/12 md:w-[500px]">
+        <div class="card-body text-center space-y-5">
+          <h2 class="text-2xl md:text-3xl font-bold text-black text-center">Congrats</h2>
+          <div class="grid place-content-center">
+            <img src="./assets/coin.png" alt="">
+          </div>
+          <p class="text-gray-600" id="modal-amount">Your donation is successful</p>
+          <div class="card-actions justify-center">
+            <button class="btn btn-active btn-ghost px-5 text-black" id="modal-close-btn">Close</button>
           </div>
         </div>
       </div>
