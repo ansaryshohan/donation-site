@@ -20,18 +20,21 @@ function handleDonation(btnID, inputId, donationAmountId, titleId) {
     if (isNaN(inputValue) || inputValue <= 0) {
       return alert("please provide a valid amount of money");
     }
+    const totalBalance = parseFloat(getInnerText("total-balance"));
+    if(totalBalance<inputValue){
+      return alert("You don't have sufficient balance")
+    }
     // donation balance
     const donationTillNow = parseFloat(getInnerText(donationAmountId));
     const donationAmount = donationTillNow + inputValue;
-    setInnerText(donationAmountId, donationAmount);
+    setInnerText(donationAmountId, donationAmount.toFixed(2));
 
     // total balance
-    const totalBalance = parseFloat(getInnerText("total-balance"));
-    const newBalance = totalBalance + inputValue;
-    setInnerText("total-balance", newBalance);
+    const newBalance = totalBalance - inputValue;
+    setInnerText("total-balance", newBalance.toFixed(2));
     document.getElementById(inputId).value = "";
 
-    // history handle
+    // history data handle
     const title = document.getElementById(titleId).innerText;
     const donationDetail = {
       id: donateHistory.length + 1,
@@ -40,7 +43,7 @@ function handleDonation(btnID, inputId, donationAmountId, titleId) {
       time: new Date(),
     };
     donateHistory.unshift(donationDetail);
-    
+
     // handle modal
     document.getElementById(
       "modal-amount"

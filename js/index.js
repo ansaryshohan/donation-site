@@ -18,21 +18,25 @@ function buttonToggleHandle() {
     donationSection.classList.add("hidden");
     historySection.classList.remove("hidden");
 
+    // ---history content handle----
     if (donateHistory.length > 0) {
-      historySection.textContent= "";
+      historySection.textContent = "";
       for (let element of donateHistory) {
         const newDiv = document.createElement("div");
-        const classes = 'w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3';
-        newDiv.classList.add(...classes.split(' '));
-        
+        const classes =
+          "w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3";
+        newDiv.classList.add(...classes.split(" "));
+
         newDiv.innerHTML = `
-          <h3 class="card-title mb-2">${element.amount} Taka is Donated for ${element.title}</h3>
+          <h3 class="card-title mb-2">${element.amount.toFixed(
+            2
+          )} Taka is Donated for ${element.title}</h3>
           <p class="text-base text-gray-500">Date : ${element.time}</p>
         `;
         historySection.appendChild(newDiv);
       }
     } else {
-      historySection.innerHTML = `<div class="w-2/3 mx-auto rounded-lg border flex flex-col py-5 px-3 text-2xl font-medium text-black text-center">
+      historySection.innerHTML = `<div class="w-2/3 mx-auto rounded-lg border flex flex-col py-8 px-3 text-2xl font-medium text-black text-center">
           You have Not Donated Yet.
       </div>`;
     }
